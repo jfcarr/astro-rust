@@ -1,0 +1,6 @@
+[package]
+name = "astro-rust"
+version = "0.1.0"
+authors = ["jfcarr <jfcarr@gmail.com>"]
+
+[dependencies]
