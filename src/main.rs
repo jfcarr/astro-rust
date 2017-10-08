@@ -1,65 +1,7 @@
-struct AstroUtil {
-    right_ascension: f32,
-    declination: f32,
-    time: f32,
-    latitude: f32,
-    longitude: f32,
-}
-
-impl AstroUtil {
-    fn set_right_ascension(&mut self, hours: u32, minutes: u32, seconds: u32) {
-        self.right_ascension =
-            ((hours as f32) + ((minutes as f32) / 60.) + ((seconds as f32) / 60. / 60.)) * 15.;
-    }
-}
-
-impl AstroUtil {
-    fn set_declination(&mut self, degrees: u32, minutes: u32, seconds: u32, cardinal: String) {
-        let calc_value = (degrees as f32) + ((minutes as f32) / 60.) +
-            ((seconds as f32) / 60. / 60.);
-
-        match cardinal.as_ref() {
-            "N" => self.declination = calc_value,
-            "S" => self.declination = -(calc_value),
-            _ => self.declination = calc_value,  // default to N
-        }
-    }
-}
-
-impl AstroUtil {
-    fn set_latitude(&mut self, degrees: u32, minutes: u32, seconds: u32, cardinal: String) {
-        let calc_value = (degrees as f32) + ((minutes as f32) / 60.) +
-            ((seconds as f32) / 60. / 60.);
-
-        match cardinal.as_ref() {
-            "N" => self.latitude = calc_value,
-            "S" => self.latitude = -(calc_value),
-            _ => self.latitude = calc_value,  // default to N
-        }
-    }
-}
-
-impl AstroUtil {
-    fn set_longitude(&mut self, degrees: u32, minutes: u32, seconds: u32, cardinal: String) {
-        let calc_value = (degrees as f32) + ((minutes as f32) / 60.) +
-            ((seconds as f32) / 60. / 60.);
-
-        match cardinal.as_ref() {
-            "E" => self.longitude = calc_value,
-            "W" => self.longitude = -(calc_value),
-            _ => self.longitude = calc_value,  // default to E
-        }
-    }
-}
-
-impl AstroUtil {
-    fn set_time(&mut self, hours: u32, minutes: u32) {
-        self.time = (hours as f32) + ((minutes as f32) / 60.);
-    }
-}
+mod astroutil;
 
 fn main() {
-    let mut astro_util = AstroUtil {
+    let mut astro_util = astroutil::AstroUtil {
         right_ascension: 0.,
         declination: 0.,
         time: 0.,
