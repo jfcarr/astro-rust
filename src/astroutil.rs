@@ -8,8 +8,8 @@ pub struct AstroUtil {
 
 impl AstroUtil {
     pub fn set_right_ascension(&mut self, hours: u32, minutes: u32, seconds: u32) {
-        self.right_ascension =
-            ((hours as f32) + ((minutes as f32) / 60.) + ((seconds as f32) / 60. / 60.)) * 15.;
+        self.right_ascension = ((hours as f32) * 15.) + ((minutes as f32) / 4.) +
+            ((seconds as f32) / 240.);
     }
 }
 
